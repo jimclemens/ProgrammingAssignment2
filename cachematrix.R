@@ -21,7 +21,7 @@ makeCacheMatrix <- function(x = matrix()) {
 	
 	set <- function(y = matrix()) {
 		x <<- y			## store the matrix in the parent environment
-		inv <<- NULL	## indicates no solution computed yet
+		inv <<- NULL		## indicates no solution computed yet
 	}
 	
 	## get retrieves the value of the matrix; setinv stores the value
@@ -45,12 +45,12 @@ cacheSolve <- function(x) {
 	inv <- x$getinv()		## retrieve the inverse or NULL
 	if (!is.null(inv)) {
 		message("getting cached solution")
-		return(inv)			## return the cached inverse
+		return(inv)		## return the cached inverse
 	}
 	
 	## If no inverse cached, compute it and store it using setinv
 	data <- x$get()
 	inv <- solve(data)
 	x$setinv(inv)
-	inv						## return the calculated inverse
+	inv				## return the calculated inverse
 }
